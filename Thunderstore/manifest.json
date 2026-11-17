@@ -1,0 +1,9 @@
+{
+  "name": "CustomFOV",
+  "version_number": "1.0.0",
+  "website_url": "",
+  "description": "A Field of View slider in Content Warning's own Settings menu (Graphics). The helmet HUD stays in place at wide FOV. Client-side only, works with vanilla lobbies.",
+  "dependencies": [
+    "BepInEx-BepInExPack-5.4.2100"
+  ]
+}

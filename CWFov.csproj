@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>CWFov</AssemblyName>
+    <RootNamespace>CWFov</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <GameDir>$(MSBuildThisFileDirectory)..\</GameDir>
+    <ManagedDir>$(GameDir)Content Warning_Data\Managed\</ManagedDir>
+    <NoWarn>$(NoWarn);CS0436;CS1701;CS1702</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Release\**" />
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(ManagedDir)Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="BepInEx">
+      <HintPath>$(GameDir)BepInEx\core\BepInEx.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>$(GameDir)BepInEx\core\0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <GameRef Include="$(ManagedDir)UnityEngine*.dll" />
+    <GameRef Include="$(ManagedDir)Unity.InputSystem.dll" />
+    <GameRef Include="$(ManagedDir)Unity.RenderPipelines.Universal.Runtime.dll" />
+    <GameRef Include="$(ManagedDir)Unity.RenderPipelines.Core.Runtime.dll" />
+    <GameRef Include="$(ManagedDir)Unity.Mathematics.dll" />
+    <GameRef Include="$(ManagedDir)Unity.TextMeshPro.dll" />
+    <GameRef Include="$(ManagedDir)Photon*.dll" />
+    <GameRef Include="$(ManagedDir)Zorro*.dll" />
+    <GameRef Include="$(ManagedDir)Assembly-CSharp-firstpass.dll" />
+    <GameRef Include="$(ManagedDir)Unity.Localization.dll" />
+    <GameRef Include="$(ManagedDir)LocalizationAssembly.dll" />
+    <GameRef Include="$(ManagedDir)Sirenix.Serialization.dll" />
+    <GameRef Include="$(ManagedDir)Sirenix.OdinInspector.Attributes.dll" />
+    <Reference Include="@(GameRef)">
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="CopyToPlugins" AfterTargets="Build" Condition="'$(SkipCopy)' != 'true'">
+    <MakeDir Directories="$(GameDir)BepInEx\plugins\CWFov" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(GameDir)BepInEx\plugins\CWFov" />
+  </Target>
+
+</Project>
