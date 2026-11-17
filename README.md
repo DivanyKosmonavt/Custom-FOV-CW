@@ -20,10 +20,6 @@
 
 If the HUD fix fails three times in a row, it turns itself off for the rest of the session.
 
-## Для русскоязычных
-
-Ползунок поля зрения в настройках игры (Графика). Нужен только вам, у остальных в лобби ставить ничего не надо. Интерфейс шлема не растягивается на большом FOV. В главном меню FOV обычный. При включённом VR (CWVR) мод отключается.
-
 ## For mod authors
 
 Custom FOV has a small public API so your mod can play nicely with it. You do not need to depend on it hard: use a soft dependency, or call it through reflection.
